@@ -1,0 +1,17 @@
+.box {
+  display: flex;
+  position: relative;
+  overflow: hidden;
+}
+a {
+  cursor: pointer;
+}
+
+.image-rec {
+  justify-self: right;
+  margin: auto;
+  top: auto;
+  bottom: auto;
+  right: 5px;
+  left: auto;
+}

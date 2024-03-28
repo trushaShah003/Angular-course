@@ -1,0 +1,85 @@
+//////////////////////////////////////////////////////////////////////////
+**************************** FORMS IN ANGULAR ****************************
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ There
+
+are mainly two ways to connect forms in angular:
+    1. template driven approach ( simpler and easier )  
+    2. reactive approach ( advanced )
+
+in angular the forms do not get submitted to a server directly,
+but in a single page app you can parse the form input data into a js object 
+this will make it easier to get the data
+although if you want, you can submit the data to a server via http requests in angular.
+
+////////////////////////// Template driven \\\\\\\\\\\\\\\\\\\\\\\\\\
+ 
+ ----- import FormsModule
+    automatically detects form tag in your HTML
+    but it won't detect any input tags
+    this behaviour is because often times you would not want to to control all of your inputs
+
+(to control the inputs in this form you will have to) 
+----- manually add ngModel to it
+    ngModel is also used in two way data binding 
+    we can use ngModel for that but it does not just o that but can also be used for greater things in forms
+
+(in the object, to register your input you will have to) 
+----- add a name property 
+  this will be the key for your input in the object
+
+(submitting)
+----- add ngSubmit event directive to the form tag
+    this will automatically trigger once when the form is submitted (make sure that the submit button has a type of submit which is key to initializing the submit event)
+    you can add any function which will get called when this submit event is triggered
+
+----- add an identifier to the form tag (#f)
+    this will generate a reference of the form
+
+----- define ngForm with the form reference
+    this will generate a js object of the form
+
+````( 1st approach to access the form object )````
+(if you want to get access to the form only after submitting)
+----- pass the reference in the submit function
+
+::::
+  onSubmit(form: NgForm) {
+    console.log(form);
+  }
+::::
+    this will give you access to the form object in the ts file
+    now we can get the data of the form as well as many other properties as an form object
+    
+````( 2nd approach to access the form object )````
+(if you want to access the form anytime)
+----- access the identifier with the help of @ViewChild
+
+::::
+@ViewChild('f') signupForm: NgForm;
+ 
+ onSubmit() {
+    console.log(this.signupForm);
+  }
+::::
+
+`````````Data Binding in Angular Form ````````
+
+ngModel can be used for any binding
+
+no DB    ---- ngModel           -- to simply control the data of the input in ts   
+1way DB  ---- [ngModel]=""      -- for default values                               
+2way DB  ---- [(ngModel)]=""    -- for accessing the value in the DOM               
+    also can be done by ,
+         ---- f.setValue()   -- have to define the entire form value object
+         ---- f.form.patchValue() -- can define defaults for any property
+
+````````` Grouping of inputs ``````````
+
+- multiple inputs can be grouped by wrapping them in a separate div 
+- add ngModelGroup directive and bind it with a string which will be the name of the grouped
+- you can also add an identifier and bind it with ngModelGroup to access the group in the
+ts file.( for validation )
+
+
+////////////////////////// Reactive Forms \\\\\\\\\\\\\\\\\\\\\\\\\\
+

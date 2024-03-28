@@ -1,0 +1,15 @@
+form {
+  margin-top: 20px;
+}
+.btn {
+  margin: 0px 5px;
+}
+
+input.ng-invalid.ng-touched,
+textarea.ng-invalid.ng-touched {
+  border: 1px solid red;
+}
+
+.add {
+  margin-bottom: 30px;
+}

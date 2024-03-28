@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "recipe-book-61d20": {
+      "hosting": {
+        "project": [
+          "recipe-book01910"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "recipe-book-61d20"
+  }
+}
